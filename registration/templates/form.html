@@ -1,328 +1,180 @@
-<!DOCTYPE html>
-<html lang="en">
+{% load widget_tweaks %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 <style>
-    .ui {
-        
-        font-style: bold;
-        height: 100vh;
-        background-attachment: fixed;
-        background-size: 100% 100%;
-        margin-left: 100px;
-        padding-left: 10%;
-        font-size: 1.5rem;
-        color: black;
-        display: flex;
-        display: inline;
-        text-align:center;
-    }
-    .btn{
-        background-origin: padding-box;
-        border: 1cm;
-        border-radius: 0.5cm;
-        width: 2cm;
-        height: 1cm;
-    }
-    input{
-        width: 300px;
-        height: 50px;
-        background-color:white;
-        border: 1px;
-        border-radius: 10px;
-    }
-    table, th, td {
-  border:1px solid black;
+  .*{
+
+  }
+  body {
+    width: 60%;
+    height: 100%;
+    margin: 2px auto;
+    padding:2.5 rem 2.5 rem;
+    {% comment %} background-color: #1b; {% endcomment %}
+    color: #black;
+    font-family: Tahoma;
+    font-size: 16px;
+    justify-content:center;
+    margin-color:2px solid black;
+    display: block;
+
+  }
+.btn{
+  background-origin: padding-box;
+  border: 1cm;
+  border-radius: 0.5cm;
+  width: 2cm;
+  height: 1cm;
 }
+
 .header{
+  padding: 0.5em;
+  margin: 2px solid black;
   border-bottom: 100%;
   border-color: black;
   color: white;
   font-size: 30px;
+  border: 1px solid black;
+  border-bottom: 2px dashed black;
+
 }
 img{
   height: 10rem;
   width: 10rem;
+
 }
+h1,h3{
+  text-align: center;
+  color: black;
+  padding-top:0px;
+  padding-left:9.5rem;
+
+}
+h1{
+  margin-top:-7.5rem;
+}
+h3{
+  margin-top:-1.5rem;
+  padding-bottom:1.5rem;
+
+}
+form {
+  width: 60vw;
+  max-width: 500px;
+  min-width: 300px;
+  margin: 0 auto;
+  padding-bottom: 2em;
+  padding-top:2.5rem;
+  justify-content: center;
+
+}
+
+.container{
+  border: 1px solid black;
+  border-top:none;
+  pading-border:2rem;
+}
+header{
+  justify-content:center;
+  text-align:center;
+  padding:0.25rem 0.5rem 2.5rem 0.75rem;
+
+  margin-color:1px black;
+}
+
 </style>
 
-<body>
+{% block content %}
+
   <div class="header">
-     <image src="https://upload.wikimedia.org/wikipedia/en/b/b8/National_Institute_of_Technology%2C_Hamirpur_Logo.png"></image>
-     <br>
-     <h1>National Institute of Technology Hamirpur (H.P.)  </h1>
+    <img src="https://upload.wikimedia.org/wikipedia/en/b/b8/National_Institute_of_Technology%2C_Hamirpur_Logo.png"></img>
+    <br>
+    <h1>National Institute of Technology Hamirpur (H.P.)</h1></br>
+    <h3>Registration Form(Academic Year 2023-2024)</h3>
   </div>
-    <form class="ui">
-        <h1>Registration Form</h1>
-        <div class="form-group mb-3 ">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1" >Roll Number</span>
-            </div>
-            <input type="text" class="form-control" placeholder="Roll No." aria-label="Roll No."
-                aria-describedby="basic-addon1" required>
+  <div class="form control container">
+     <form method="POST" action="">
+      {% comment %} <><legend>Registration Form</legend> {% endcomment %}
+        {% comment %} {% csrf_token %}for redirecting this is not to be used {% endcomment %}
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Roll Number</label>
+          {{ form.roll_no|add_class:"form-control" }}
         </div>
-        <div class="form-group mb-3 ">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">Registration Semester Number</span>
-            </div>
-            <input type="text" class="form-control" placeholder="semester No." aria-label="semester No."
-                aria-describedby="basic-addon1" required>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Semester Registration</label>
+          {{ form.sem_reg|add_class:"form-control" }}
         </div>
-        <div class="form-group mb-3 ">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">Hostel Name</span>
-            </div>
-            <input type="text" class="form-control" placeholder="Hostel Name" aria-label="Hostel Name"
-                aria-describedby="basic-addon1" required>
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">Hostel Room No.</span>
-            </div>
-            <input type="text" class="form-control" placeholder="Hostel Room No." aria-label="Hostel Room No."
-                aria-describedby="basic-addon1" required>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Hostel Name</label>
+          {{ form.hostel_name|add_class:"form-control" }}
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Room Number</label>
+          {{ form.room_no|add_class:"form-control" }}
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Department</label>
+          {{ form.department|add_class:"form-control" }}
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Programme</label>
+          {{ form.programme|add_class:"form-control" }}
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Name</label>
+          {{ form.name|add_class:"form-control" }}
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Fathers Name</label>
+          {{ form.fathers_name|add_class:"form-control" }}
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Email</label>
+          {{ form.email|add_class:"form-control" }}
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
+          {{ form.phone_number|add_class:"form-control" }}
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Pincode</label>
+          {{ form.pincode|add_class:"form-control" }}
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Permanent Address</label>
+          {{ form.address|add_class:"form-control" }}
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Correspondence Address</label>
+          {{ form.address2|add_class:"form-control" }}
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">CGPI</label>
+          {{ form.cgpi|add_class:"form-control" }}
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">SGPI</label>
+          {{ form.sgpi|add_class:"form-control" }}
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Amount</label>
+          {{ form.amount|add_class:"form-control" }}
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Transaction Number</label>
+          {{ form.transaction_number|add_class:"form-control" }}
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Date of Payment</label>
+          {{ form.date_of_payment|add_class:"form-control" }}
         </div>
 
-        <div class="form-group  mb ">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">Name Of Department</span>
-            </div>
-            <input type="text" class="form-control" placeholder="Department" aria-label="Department"
-                aria-describedby="basic-addon1" required>
-        </div>
-        <div class="form-group  mb ">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">Programme</span>
-            </div>
-            <input type="text" class="form-control" placeholder="Programme" aria-label="Programme"
-                aria-describedby="basic-addon1" required>
-        </div>
-        <div class="form-group  mb ">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">Name</span>
-            </div>
-            <input type="text" class="form-control" placeholder="name" aria-label="Username" aria-describedby="basic-addon1" required>
-        </div>
-        <div class="form-group mb">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">Email</span>
-            </div>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="email" required>
 
-        </div>
-        <div class="form-group mb">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">Phone</span>
-            </div>
-            <input type="number" class="form-control" id="phone" 
-                placeholder="Phone" required>
 
-        </div>
-        <div class="form-group mb">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">PinCode</span>
-            </div>
-            <input type="number" class="form-control" id="PinCode" 
-                placeholder="PinCode" required>
 
-        </div>
-        <br>
-        <div class="form-group">
-            <label for="enteraddress">Enter Address</label>
-            <br>
-            <textarea class="form-control" id="enteraddress" rows="3" required></textarea>
-        </div>
-        
-    </form>
-    <form class="regis">
-       <h1> Details of the Course(Registration During Current semester)</h1>
-       <table style="width:90%">
-        <tr>
-            <th>Sr. No.</th>
-            <th>Course Code</th>
-            <th>Course Name</th>
-            <th>L</th>
-            <th>T</th>
-            <th>P/D</th>
-            <th>Credits</th>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-          </tr>
-       </table>
-       <h3>Click on the "Choose File" button to upload a sign:</h3>
-       <input type="file" id="myFile" name="filename">
-       <h1>Results of Previous Semester</h1>
-       <table style="width:90%">
-        <tr>
-            <th>Previous Semester Number</th>
-            <th>SGPI</th>
-            <th>CGPI</th>
-            <th>Course(s) With F Grade ,If any
-            </th>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-            <td><input type="text" class="form-control"> </td>
-          </tr>
-       </table>
-       <h2>Student Declaration
-     </h2>
-     <p>    I hereby declare that the information furnished by me in this Registration Form is true and correct. I have not concealed any
-        information. However, if any information furnished herein is incorrect or incomplete, I understand that I am liable to appropriate
-        action and I also agree to forego my registration.</p>
-       
-        <div class="form-group mb">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">Date</span>
-            </div>
-            <input type="date" class="form-control" id="date" 
-                placeholder="Date" required>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
 
-        </div>
-        <h3>Click on the "Choose File" button to upload a sign:</h3>
-        <input type="file" id="myFile" name="filename">
-    </form>
-    <h1>Semester Registration Fee Details</h1>
-    <table style="width:90%">
-        <tr>
-            <th>
-                Amount
-            </th>
-            <th>Date of Payment</th>
-            <th>SBI Collect Transaction Number:</th>
-        </tr>
-        <tr>
-            
-                <td><input type="number" class="form-control"> </td>
-                <td><input type="date" class="form-control"> </td>
-                <td><input type="text" class="form-control"> </td>
-            
-        </tr>
-    </table>
-    <h1>Undertaking for Payment/Clearance of Dues</h1>
-    <p>I undertake to pay/clear the Dues, if any, found outstanding against my name at Library, Hostel, Accounts and any other
-        Department/Section, as per the directions/notification of the authorities.</p>
-        <h3>Click on the "Choose File" button to upload a sign:</h3>
-        <input type="file" id="myFile" name="filename">
-    <button type="submit" class="btn btn-primary">Submit</button>
-</body>
-
-</html>
+</div>
+{% endblock %}
